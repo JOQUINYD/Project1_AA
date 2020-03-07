@@ -8,6 +8,8 @@ public class DataBase : MonoBehaviour
     private int columns;
     private int[][] rowsArray;
     private int[][] columnsArray;
+    private int[,] gameBoard;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -45,7 +47,23 @@ public class DataBase : MonoBehaviour
         set => rowsArray = value;
     }
 
+    public int[,] GameBoard
+    {
+        get => gameBoard;
+        set => gameBoard = value;
+    }
 
+    public void printBoard()
+    {
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                //print("Aiuda");
+                print(gameBoard[i,j]);
+            }
+        }
+    }
     
     
     

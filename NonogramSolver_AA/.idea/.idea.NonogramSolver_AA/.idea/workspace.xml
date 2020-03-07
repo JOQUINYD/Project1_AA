@@ -13,14 +13,15 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Lector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/DataBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Datos.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Solver.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Datos.cs" />
-        <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Lector.cs" />
+        <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Solver.cs" />
       </list>
     </option>
   </component>
@@ -64,6 +65,9 @@
       <option name="presentableId" value="Default" />
       <updated>1583451447213</updated>
       <workItem from="1583451464877" duration="8495000" />
+      <workItem from="1583471530410" duration="27000" />
+      <workItem from="1583502516298" duration="227000" />
+      <workItem from="1583556631340" duration="6764000" />
     </task>
     <servers />
   </component>
