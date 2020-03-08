@@ -69,8 +69,7 @@ public class DataBase : MonoBehaviour
     public void printNonogram()
     {
         string res = "";
-///        print(rows);
-   //     print(columns);
+
         for (int i = 0; i < rows; i++)
         {
             

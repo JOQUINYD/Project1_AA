@@ -21,8 +21,8 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Datos.cs" />
         <option value="$PROJECT_DIR$/Assets/Game.cs" />
-        <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Lector.cs" />
+        <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Solver.cs" />
       </list>
     </option>
@@ -40,7 +40,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TWShift.3" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="settings.editor.selected.configurable" value="CodeLensConfigurable" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -72,7 +72,7 @@
       <workItem from="1583556631340" duration="7175000" />
       <workItem from="1583598191016" duration="31701000" />
       <workItem from="1583636093854" duration="13927000" />
-      <workItem from="1583679129665" duration="4945000" />
+      <workItem from="1583679129665" duration="8761000" />
     </task>
     <servers />
   </component>
@@ -86,10 +86,10 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="361" y="76" key="#Notifications/0.0.1536.834@0.0.1536.834" timestamp="1583451690429" />
-    <state x="0" y="120" key="SettingsEditor" timestamp="1583451681215">
+    <state x="0" y="120" key="SettingsEditor" timestamp="1583685816671">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="0" y="120" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1583451681215" />
+    <state x="0" y="120" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1583685816671" />
     <state x="425" y="189" key="run.anything.popup" timestamp="1583617398001">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

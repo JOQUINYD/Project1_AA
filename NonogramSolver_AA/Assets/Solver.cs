@@ -42,14 +42,17 @@ public class Solver : MonoBehaviour
         }
         else
         {
-            
-            dataBase.GameBoard[find.X][find.Y] = 2;
-            if (solve())
+            if (true) 
             {
-                return true;
+                dataBase.GameBoard[find.X][find.Y] = 2;
+                if (solve())
+                {
+                    return true;
+                }
+
+                dataBase.GameBoard[find.X][find.Y] = 0;         
             }
 
-            dataBase.GameBoard[find.X][find.Y] = 0;
         }
 
 
@@ -104,7 +107,13 @@ public class Solver : MonoBehaviour
 
     public bool validRow(Point point)
     {
-        return validArrayA(dataBase.RowsArray[point.X], dataBase.GameBoard[point.X]);
+        int[] arr = new int[dataBase.Columns];
+        for (int i = 0; i < dataBase.Columns; i++)
+        {
+            arr[i] = dataBase.GameBoard[point.X][i];
+        }
+        arr[point.Y] = 1;
+        return validArrayA(dataBase.RowsArray[point.X], arr);
     }
 
 
@@ -216,9 +225,12 @@ public class Solver : MonoBehaviour
         return res;
     }
 
+   
 
-public bool validArrayA(int[] tracks, int[] arr)
-{
+
+    public bool validArrayA(int[] tracks, int[] arr)
+    {
+        
 
         int traksLen = tracks.Length;
 
