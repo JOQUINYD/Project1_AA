@@ -21,6 +21,7 @@ public class Game : MonoBehaviour
         print(elapsedMs);
         
         db.printNonogram();
+        db.printNonogramBonito();
 
     }
 

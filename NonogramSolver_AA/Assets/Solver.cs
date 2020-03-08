@@ -8,6 +8,7 @@ public class Solver : MonoBehaviour
 {
     public DataBase dataBase;
 
+    public int cantxd = 0;
 
     void Start()
     {
@@ -16,7 +17,8 @@ public class Solver : MonoBehaviour
 
     public bool solve()
     {
-
+       // print(cantxd);
+        //cantxd++;
         Point find = getEmpty();
         if (find == Point.Empty)
         {
@@ -42,7 +44,7 @@ public class Solver : MonoBehaviour
         }
         else
         {
-            if (true) 
+            if (validPosition(find,2)) 
             {
                 dataBase.GameBoard[find.X][find.Y] = 2;
                 if (solve())
@@ -54,9 +56,25 @@ public class Solver : MonoBehaviour
             }
 
         }
+        
+        
+        
 
 
+        /*for (int i = 1; i < 2; i++)
+        {
+            if (validPosition(find,i))
+            {
+                dataBase.GameBoard[find.X][find.Y] = i;
+                if (solve())
+                {
+                    return true;
+                }
+                dataBase.GameBoard[find.X][find.Y] = 0;   
+            }
+        }*/
         return false;
+        
     }
 
 
@@ -85,7 +103,7 @@ public class Solver : MonoBehaviour
 
     public bool validPosition(Point point, int n)
     {
-        return validRow(point) && validColumn(point);
+        return validRow(point, n) && validColumn(point, n);
     }
     
 
@@ -94,7 +112,7 @@ public class Solver : MonoBehaviour
     {
         for (int i = 0; i < dataBase.Rows; i++)
         {
-            if (!validArrayA(dataBase.RowsArray[i], dataBase.GameBoard[i]))
+            if (!validArrayA(dataBase.RowsArray[i], dataBase.GameBoard[i], 1))
             {
                 return false;
             }
@@ -105,15 +123,15 @@ public class Solver : MonoBehaviour
     }
 
 
-    public bool validRow(Point point)
+    public bool validRow(Point point, int n)
     {
         int[] arr = new int[dataBase.Columns];
         for (int i = 0; i < dataBase.Columns; i++)
         {
             arr[i] = dataBase.GameBoard[point.X][i];
         }
-        arr[point.Y] = 1;
-        return validArrayA(dataBase.RowsArray[point.X], arr);
+        arr[point.Y] = n;
+        return validArrayA(dataBase.RowsArray[point.X], arr, n);
     }
 
 
@@ -130,7 +148,7 @@ public class Solver : MonoBehaviour
                 arr[j] = dataBase.GameBoard[j][i];
             }
 
-            if (!validArrayA(dataBase.ColumnsArray[i], arr))
+            if (!validArrayA(dataBase.ColumnsArray[i], arr, 1))
             {
                 return false;
             }
@@ -141,7 +159,7 @@ public class Solver : MonoBehaviour
     }
 
 
-    public bool validColumn(Point point)
+    public bool validColumn(Point point, int n)
     {
         int[] arr = new int[dataBase.Rows];
         for (int i = 0; i < dataBase.Rows; i++)
@@ -149,8 +167,8 @@ public class Solver : MonoBehaviour
             arr[i] = dataBase.GameBoard[i][point.Y];
         }
 
-        arr[point.X] = 1;
-        return validArrayA(dataBase.ColumnsArray[point.Y], arr);
+        arr[point.X] = n;
+        return validArrayA(dataBase.ColumnsArray[point.Y], arr,n);
 
     }
 
@@ -225,12 +243,60 @@ public class Solver : MonoBehaviour
         return res;
     }
 
-   
-
-
-    public bool validArrayA(int[] tracks, int[] arr)
+    public int cantPistas(int[] traks)
     {
+        int r = 0;
+        for (int i = 0; i < traks.Length; i++)
+        {
+            r += traks[i];
+        }
+        return r;
+    }
+
+    public int cantLlenas(int[] arr)
+    {
+        int res = 0;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == 1)
+            {
+                res += 1;
+            }
+        }
+
+        return res;
+    }
+    
+    public int cantDisponibles(int[] arr)
+    {
+        int res = 0;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == 0)
+            {
+                res += 1;
+            }
+        }
+
+        return res;
+    }
+    
+    public bool validArrayA2(int[] tracks, int[] arr, int n)
+    {
+        if (cantDisponibles(arr) < cantPistas(tracks) - cantLlenas(arr))
+        {
+            return false;
+        }
         
+        return true;
+    }
+
+    public bool validArrayA(int[] tracks, int[] arr,int n)
+    {
+        if (n == 2)
+        {
+            return validArrayA2(tracks, arr, n);
+        }
 
         int traksLen = tracks.Length;
 

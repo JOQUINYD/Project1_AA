@@ -84,6 +84,32 @@ public class DataBase : MonoBehaviour
 
         print(res);
     }
+    
+    public void printNonogramBonito()
+    {
+        string res = "";
+
+        for (int i = 0; i < rows; i++)
+        {
+            
+            res += "\n";
+            for (int j = 0; j < columns; j++)
+            {
+                if (gameBoard[i][j] == 1)
+                {
+                    res += "[X]";
+                }
+                else
+
+                {
+                    res += "[O]"; 
+                }
+
+            }
+        }
+
+        print(res);
+    }
 
     public int[][] transponer()
     {
