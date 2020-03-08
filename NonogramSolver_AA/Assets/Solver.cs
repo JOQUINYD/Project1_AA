@@ -29,9 +29,10 @@ public class Solver : MonoBehaviour
         find.Y = find.Y - 1;
         
 
-        if (validPosition(find,1))
+
+        for (int i = 1; i < 3; i++)
         {
-            for (int i = 1; i < 3; i++)
+            if (validPosition(find, i))
             {
                 dataBase.GameBoard[find.X][find.Y] = i;
                 if (solve())
@@ -39,10 +40,16 @@ public class Solver : MonoBehaviour
                     return true;
                 }
 
-                dataBase.GameBoard[find.X][find.Y] = 0;
+                dataBase.GameBoard[find.X][find.Y] = 0; 
             }
         }
-        else
+        
+        
+        
+        
+        /*
+         Este funciona con el for de 1 y 2 arriba
+         else
         {
             if (validPosition(find,2)) 
             {
@@ -55,10 +62,7 @@ public class Solver : MonoBehaviour
                 dataBase.GameBoard[find.X][find.Y] = 0;         
             }
 
-        }
-        
-        
-        
+        }*/
 
 
         /*for (int i = 1; i < 2; i++)
