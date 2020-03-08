@@ -20,9 +20,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Datos.cs" />
-        <option value="$PROJECT_DIR$/Assets/Lector.cs" />
-        <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Game.cs" />
+        <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Lector.cs" />
         <option value="$PROJECT_DIR$/Assets/Solver.cs" />
       </list>
     </option>
@@ -71,6 +71,8 @@
       <workItem from="1583502516298" duration="227000" />
       <workItem from="1583556631340" duration="7175000" />
       <workItem from="1583598191016" duration="31701000" />
+      <workItem from="1583636093854" duration="13927000" />
+      <workItem from="1583679129665" duration="4945000" />
     </task>
     <servers />
   </component>
@@ -92,9 +94,9 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1583617398001" />
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1583620016835">
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1583681033937">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1583620016835" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1583681033937" />
   </component>
 </project>

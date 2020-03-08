@@ -8,7 +8,8 @@ public class DataBase : MonoBehaviour
     private int columns;
     private int[][] rowsArray;
     private int[][] columnsArray;
-    private int[,] gameBoard;
+    private int[][] gameBoard;
+    
     
     
     // Start is called before the first frame update
@@ -47,7 +48,7 @@ public class DataBase : MonoBehaviour
         set => rowsArray = value;
     }
 
-    public int[,] GameBoard
+    public int[][] GameBoard
     {
         get => gameBoard;
         set => gameBoard = value;
@@ -60,7 +61,7 @@ public class DataBase : MonoBehaviour
             for (int j = 0; j < columns; j++)
             {
                 //print("Aiuda");
-                print(gameBoard[i,j]);
+                print(gameBoard[i][j]);
             }
         }
     }
@@ -76,13 +77,32 @@ public class DataBase : MonoBehaviour
             res += "\n";
             for (int j = 0; j < columns; j++)
             {
-                res += gameBoard[i, j];
+                res += gameBoard[i][j];
                 res += "  ";
                 
             }
         }
 
         print(res);
+    }
+
+    public int[][] transponer()
+    {
+        int[][] res = new int[columns][];
+        for (int i = 0; i < res.Length; i++)
+        {
+            res[i]= new int[rows];
+        }
+        for (int a = 0; a < Rows; a++)
+        {
+            for (int b = 0; b < columns; b++)
+            {
+                res[b][a] = gameBoard[a][b];
+               
+            }
+        }
+
+        return res;
     }
     
     

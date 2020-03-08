@@ -11,9 +11,6 @@ public class Solver : MonoBehaviour
 
     void Start()
     {
-        int[] p1 = {3};
-        int[] a = {2, 1, 2, 2, 2};
-
 
     }
 
@@ -23,44 +20,47 @@ public class Solver : MonoBehaviour
         Point find = getEmpty();
         if (find == Point.Empty)
         {
-
-            return  validRows() && validColumns();
+            return validRows() && validColumns();
         }
-        
-        
+
         find.X = find.X - 1;
         find.Y = find.Y - 1;
-        if (validPosition(find))
+        
+
+        if (validPosition(find,1))
         {
             for (int i = 1; i < 3; i++)
             {
-                dataBase.GameBoard[find.X, find.Y] = i;
+                dataBase.GameBoard[find.X][find.Y] = i;
                 if (solve())
                 {
                     return true;
-                }    
-                dataBase.GameBoard[find.X, find.Y] = 0;
+                }
+
+                dataBase.GameBoard[find.X][find.Y] = 0;
             }
         }
         else
         {
-            dataBase.GameBoard[find.X, find.Y] = 2;
+            
+            dataBase.GameBoard[find.X][find.Y] = 2;
             if (solve())
             {
                 return true;
-            }    
-            dataBase.GameBoard[find.X, find.Y] = 0;
+            }
+
+            dataBase.GameBoard[find.X][find.Y] = 0;
         }
 
 
         return false;
     }
-    
-    
+
+
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public Point getEmpty()
@@ -69,10 +69,9 @@ public class Solver : MonoBehaviour
         {
             for (int j = 0; j < dataBase.Columns; j++)
             {
-                if (dataBase.GameBoard[i, j] == 0)
+                if (dataBase.GameBoard[i][j] == 0)
                 {
-                  //  print("Retorno un punto");
-                    return new Point(i+1,j+1);
+                    return new Point(i + 1, j + 1);
                 }
             }
         }
@@ -81,71 +80,36 @@ public class Solver : MonoBehaviour
     }
 
 
-    public bool validPosition(Point point)
+    public bool validPosition(Point point, int n)
     {
         return validRow(point) && validColumn(point);
     }
+    
 
 
     public bool validRows()
     {
-        bool res = true;
         for (int i = 0; i < dataBase.Rows; i++)
         {
-          /*  string text = "";
-            text += "Se validara la fila " + i + " : ";
-*/
-
-            int[] arr = new int[dataBase.Columns];
-            for (int j = 0; j < dataBase.Columns; j++)
+            if (!validArrayA(dataBase.RowsArray[i], dataBase.GameBoard[i]))
             {
-                arr[j] = dataBase.GameBoard[i, j];
-                //text += arr[j] + ", ";
+                return false;
             }
-            //print(text);
-
-
-           /* string text2 = "Las pistas son: ";
-            for (int j = 0; j < dataBase.RowsArray[i].Length; j++)
-            {
-                text2 += dataBase.RowsArray[i][j];
-                text2 += ", ";
-
-            }
-
-            print(text2);*/
-
-           if (!validArrayA(dataBase.RowsArray[i], arr))
-           {
-               return false;
-           }
-            
-
-            
-           // print("Esta fila es " + rest);
-           
 
         }
 
         return true;
+    }
 
-    }
-    
-    
-    public bool validRow(Point point )
+
+    public bool validRow(Point point)
     {
-        int[] arr = new int[dataBase.Columns];
-        for (int i = 0; i < dataBase.Columns; i++)
-        {
-            arr[i] = dataBase.GameBoard[point.X, i];
-        }
-        arr[ point.Y] = 1;
-        return validArrayA(dataBase.RowsArray[point.X],  arr);
+        return validArrayA(dataBase.RowsArray[point.X], dataBase.GameBoard[point.X]);
     }
-    
-    
-    
-    
+
+
+
+
     public bool validColumns()
     {
         bool res = true;
@@ -154,7 +118,7 @@ public class Solver : MonoBehaviour
             int[] arr = new int[dataBase.Rows];
             for (int j = 0; j < dataBase.Rows; j++)
             {
-                arr[j] = dataBase.GameBoard[j,i];
+                arr[j] = dataBase.GameBoard[j][i];
             }
 
             if (!validArrayA(dataBase.ColumnsArray[i], arr))
@@ -162,50 +126,163 @@ public class Solver : MonoBehaviour
                 return false;
             }
         }
+
         return true;
 
     }
-    
-    
-    public bool validColumn(Point point )
+
+
+    public bool validColumn(Point point)
     {
         int[] arr = new int[dataBase.Rows];
         for (int i = 0; i < dataBase.Rows; i++)
         {
-            arr[i] = dataBase.GameBoard[i, point.Y];
+            arr[i] = dataBase.GameBoard[i][point.Y];
         }
 
-        arr[ point.X] = 1;
+        arr[point.X] = 1;
         return validArrayA(dataBase.ColumnsArray[point.Y], arr);
 
     }
 
-
-    public bool validArrayA(int[] tracks, int[] arr)
+    public int cantGrupos(int[] arr)
     {
-        
-        
-        int trackPos = 0;
-        
-        int empty = emptySpacesA(arr);
+        int res = 0;
+        bool agrego = false;
 
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i]==1 && !agrego)
+            {
+                agrego = true;
+                res++;
+            }
+            if(arr[i]!= 1)
+            {
+                agrego = false;
+            }
+            
+        }
+        
+        
+        return res;
+
+    }
+
+    public bool arrayFull(int[] arr)
+    {
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == 0)
+            {
+                return false;
+            }   
+        }
+        
+
+        return true;
+    }
+
+    int[] arrToTraks(int[] arr, int c)
+    {
+        int[] res = new int[c];
+        int count = 0;
+        int n = 0;
+        bool encontro = false;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == 1 )
+            {
+                encontro = true;
+                n++;
+            }
+            else
+            {
+                if (encontro)
+                {
+                    res[count] = n;
+                    count++;
+                    n = 0;
+                    encontro = false;                   
+                }
+            }
+        }
+
+        if (n>0)
+        {
+            res[count] = n;
+        }
+
+        return res;
+    }
+
+
+public bool validArrayA(int[] tracks, int[] arr)
+{
+
+        int traksLen = tracks.Length;
+
+        if (traksLen == 0)
+        {
+            return false;
+        }
+        if (tracks[0] == arr.Length)
+        {
+            return true;
+        }
+        
+        bool arrFull = arrayFull(arr);
+        int cantGr = cantGrupos(arr);
+        
+        if (cantGr  > traksLen)
+        {
+            return false;
+        }
+
+        int[] arrT = arrToTraks(arr,traksLen);
+
+        for (int i = 0; i < traksLen; i++)
+        {
+
+            if (arrT[i] > tracks[i])
+            {
+                return false;
+            }
+
+            if (arrFull && arrT[i] != tracks[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+    
+    
+    
+    
+    public bool validArrayB(int[] tracks, int[] arr)
+    {
+
+
+        int trackPos = 0;
+        int empty = emptySpacesA(arr);
         int c = 0;
         bool found = false;
 
         for (int i = 0; i < arr.Length; i++)
         {
-            
             if (trackPos > tracks.Length)
             {
-              
+
                 return false;
             }
 
-            if ((arr[i] == 0 ||arr[i] == 2) && found)
+            if ((arr[i] == 0 || arr[i] == 2) && found)
             {
-                if (empty>0)
+                if (empty > 0)
                 {
-                    if (trackPos<tracks.Length && tracks[trackPos] >= c  )
+                    if (trackPos < tracks.Length && tracks[trackPos] >= c)
                     {
                         trackPos++;
                         found = false;
@@ -215,23 +292,24 @@ public class Solver : MonoBehaviour
                     {
                         return false;
                     }
-                    
+
                 }
                 else
                 {
-                    if (trackPos<tracks.Length && tracks[trackPos] == c )
+                    if (trackPos < tracks.Length && tracks[trackPos] == c)
                     {
                         trackPos++;
                         found = false;
-                        c = 0;     
+                        c = 0;
                     }
                     else
                     {
                         return false;
                     }
                 }
-                
+
             }
+
             if (arr[i] == 1)
             {
 
@@ -244,16 +322,17 @@ public class Solver : MonoBehaviour
         {
             if (empty > 0)
             {
-                if (trackPos < tracks.Length && !(tracks[trackPos] >= c)){
+                if (trackPos < tracks.Length && !(tracks[trackPos] >= c))
+                {
                     return false;
-                }   
+                }
             }
             else
             {
                 if (trackPos < tracks.Length && !(tracks[trackPos] == c))
                 {
                     return false;
-                }           
+                }
             }
 
             trackPos++;
@@ -262,119 +341,11 @@ public class Solver : MonoBehaviour
                 return false;
             }
         }
+
         return true;
     }
     
-    
-    
-    
-    
-    public bool validArray(int[] tracks, int position , int[] arr)
-    {
-        arr[position] = 1;
-        int empty = emptySpaces(tracks,arr);
-        int occupated = arr.Length - empty;
-        int max = maxO(tracks);
-        if (occupated > max)
-        {
-            return false;
-        }
 
-        if (groupsCounter(arr) > tracks.Length)
-        {
-            return false;
-        }
-
-        for (int i = 0; i < tracks.Length; i++)
-        {
-            if (!findGroup(tracks[i], arr))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public int groupsCounter(int[] arr)
-    {
-        bool found = false;
-        int res = 0;
-        for (int i = 0; i < arr.Length; i++)
-        {
-            if(arr[i] == 0&& found)
-            {
-                res++;
-                found = false;
-            }
-            if(arr[i] == 1)
-            {
-                found = true;
-            }
-            
-        }
-
-        return res;
-    }
-    
-    public bool findGroup(int c, int[] arr)
-    {
-        int counter =0;
-        for (int i = 0; i < arr.Length; i++)
-        {
-            if (arr[i] == 0)
-            {
-                if (counter==c)
-                {
-                    return true;
-                }
-                counter = 0;
-            }
-            else
-            {
-                counter++;
-            }
-        }
-        if (counter==c)
-        {
-            return true;
-        }
-        return false;
-
-    }
-
-
-    public bool validSeparation(int[] tracks, int[] arr)
-    {
-        return true;
-    }
-
-
-    public int maxO(int[] tracks)
-    {
-        int res = 0;
-        for (int i = 0; i < tracks.Length; i++)
-        {
-            res += tracks[i];
-        }
-
-        return res;
-    }
-    
-
-    public int emptySpaces(int[] tracks, int[] arr)
-    {
-        int res = 0;
-        for (int i = 0; i < arr.Length; i++)
-        {
-            if (arr[1]==0)
-            {
-                res++;
-            } 
-        }
-        return res;
-
-    }
-    
     public int emptySpacesA( int[] arr)
     {
         int res = 0;

@@ -8,26 +8,18 @@ public class Game : MonoBehaviour
     public Lector lector;
     public Solver solver;
     public DataBase db;
-    
+
     void Start()
     {
-        int[] r = {3, 4, 5};
-        //print("EL TAMAÑO ES ");
-        //print(r.Length);
         lector.readFile("");
-        /* for (int i = 0; i < db.ColumnsArray.Length; i++)
-        {
-            print("Columna");
-            string r = "";
-            for (int j = 0; j < db.ColumnsArray[i].Length; j++)
-            {
-                r += db.ColumnsArray[i][j];
-            }
-            print(r);
-        }*/
-        
         db.printNonogram();
+        //
+        var watch = System.Diagnostics.Stopwatch.StartNew();
         solver.solve();
+        watch.Stop();
+        var elapsedMs = watch.ElapsedMilliseconds;
+        print(elapsedMs);
+        
         db.printNonogram();
 
     }

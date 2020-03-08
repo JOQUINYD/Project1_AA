@@ -53,7 +53,7 @@ public class Lector : MonoBehaviour
             }
             
         }
-        //dataBase.printBoard();
+
     }
 
     public void setCounter(string line)
@@ -75,7 +75,11 @@ public class Lector : MonoBehaviour
         }
         dataBase.Columns = Convert.ToInt32(value);
         dataBase.ColumnsArray = new int[Convert.ToInt32(value)][];
-        dataBase.GameBoard = new int[dataBase.Rows,dataBase.Columns];
+        dataBase.GameBoard = new int [dataBase.Rows][];
+        for (int i = 0; i < dataBase.GameBoard.Length; i++)
+        {
+            dataBase.GameBoard[i] = new int[dataBase.Columns];
+        }
         //dataBase.printBoard();
         
     }
