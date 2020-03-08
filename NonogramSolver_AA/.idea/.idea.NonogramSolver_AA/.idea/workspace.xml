@@ -11,6 +11,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Game.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Lector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/DataBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Solver.cs" root0="FORCE_HIGHLIGHTING" />
@@ -21,6 +22,7 @@
         <option value="$PROJECT_DIR$/Assets/Datos.cs" />
         <option value="$PROJECT_DIR$/Assets/Lector.cs" />
         <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game.cs" />
         <option value="$PROJECT_DIR$/Assets/Solver.cs" />
       </list>
     </option>
@@ -67,7 +69,8 @@
       <workItem from="1583451464877" duration="8495000" />
       <workItem from="1583471530410" duration="27000" />
       <workItem from="1583502516298" duration="227000" />
-      <workItem from="1583556631340" duration="6764000" />
+      <workItem from="1583556631340" duration="7175000" />
+      <workItem from="1583598191016" duration="31701000" />
     </task>
     <servers />
   </component>
@@ -85,5 +88,13 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="0" y="120" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1583451681215" />
+    <state x="425" y="189" key="run.anything.popup" timestamp="1583617398001">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1583617398001" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1583620016835">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1583620016835" />
   </component>
 </project>

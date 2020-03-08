@@ -64,6 +64,26 @@ public class DataBase : MonoBehaviour
             }
         }
     }
+
+    public void printNonogram()
+    {
+        string res = "";
+///        print(rows);
+   //     print(columns);
+        for (int i = 0; i < rows; i++)
+        {
+            
+            res += "\n";
+            for (int j = 0; j < columns; j++)
+            {
+                res += gameBoard[i, j];
+                res += "  ";
+                
+            }
+        }
+
+        print(res);
+    }
     
     
     

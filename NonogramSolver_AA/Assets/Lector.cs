@@ -12,7 +12,8 @@ public class Lector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        readFile("");
+        /*
+        readFile(""); */
 
     }
 
@@ -24,35 +25,35 @@ public class Lector : MonoBehaviour
             setCounter(file);
 
             file = fr.ReadLine();
-            print("####################Array de filas ####################");
+            //print("####################Array de filas ####################");
             for (int i = 0; i < dataBase.Rows; i++)
             {
                 file =  fr.ReadLine();
-                print(file);
+               // print(file);
                 dataBase.RowsArray[i] = obtainArray(file);
                 
                 for (int j = 0; j < dataBase.RowsArray[i].Length; j++)
                 {
-                    print(dataBase.RowsArray[i][j]);
+                   // print(dataBase.RowsArray[i][j]);
                 }
             }
             
             file = fr.ReadLine();
-            print("####################Array de Columnas ####################");
-            for (int i = 0; i < dataBase.Rows; i++)
+            //print("####################Array de Columnas ####################");
+            for (int i = 0; i < dataBase.Columns; i++)
             {
                 file =  fr.ReadLine();
-                print(file);
+                //print(file);
                 dataBase.ColumnsArray[i] = obtainArray(file);
                 
                 for (int j = 0; j < dataBase.ColumnsArray[i].Length; j++)
                 {
-                    print(dataBase.ColumnsArray[i][j]);
+                    //print(dataBase.ColumnsArray[i][j]);
                 }
             }
             
         }
-        dataBase.printBoard();
+        //dataBase.printBoard();
     }
 
     public void setCounter(string line)
