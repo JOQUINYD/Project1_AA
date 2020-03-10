@@ -23,8 +23,8 @@ public class Game : MonoBehaviour
         
         db.printNonogram();
         db.printNonogramBonito();
-        grid = new GridDrawer(db.GameBoard);
-        grid.drawAllBoard();
+
+        db.grid.drawAllBoard();
     }
 
     // Update is called once per frame

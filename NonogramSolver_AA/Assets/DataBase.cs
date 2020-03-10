@@ -10,13 +10,15 @@ public class DataBase : MonoBehaviour
     private int[][] columnsArray;
     private int[][] gameBoard;
     private bool pasoAPaso;
+
+    public GridDrawer grid;
     
     
     
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -25,6 +27,9 @@ public class DataBase : MonoBehaviour
         
     }
 
+    
+    
+    
     public bool PasoAPaso
     {
         get => pasoAPaso;

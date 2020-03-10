@@ -37,8 +37,14 @@ public class Solver : MonoBehaviour
             {
 
                 dataBase.GameBoard[find.X][find.Y] = i;
-                if (dataBase.PasoAPaso)
+                if (dataBase.PasoAPaso && i==1)
                 {
+                    
+                    dataBase.grid.drawBlackTile(find.X,find.Y);
+                    new WaitForSeconds(1);
+                    
+                        
+                    
                     //Si i==1 pinte el cuadro en el find con 1
                 }
 
@@ -50,7 +56,9 @@ public class Solver : MonoBehaviour
                 dataBase.GameBoard[find.X][find.Y] = 0; 
                 if (dataBase.PasoAPaso)
                 {
+                    dataBase.grid.drawWhiteTile(find.X,find.Y);
                     //pinte el cuadro en el find con 0
+                    new WaitForSeconds(1);
                 }
 
             }

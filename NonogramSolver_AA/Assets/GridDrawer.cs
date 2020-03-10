@@ -8,6 +8,7 @@ public class GridDrawer : MonoBehaviour
 {
     private GameObject prefabBlackTile;
     private GameObject prefabDarkBlueTile;
+    private GameObject prefabWhiteTile;
     
     private int numCols;
     private int numRows;
@@ -52,6 +53,18 @@ public class GridDrawer : MonoBehaviour
         setValues();
     }
 
+    public GridDrawer()
+    {
+    }
+
+    public void _init_gridDrawer(int[][] _mainBoard)
+    {
+        this.mainBoard = _mainBoard;
+        this.numRows = this.mainBoard.Length;
+        this.numCols = this.mainBoard[0].Length;
+        setValues();
+    }
+
     void setValues()
     {
         maxSize = 15;
@@ -74,6 +87,7 @@ public class GridDrawer : MonoBehaviour
         
         prefabBlackTile = Resources.Load<GameObject>("black_pixel");
         prefabDarkBlueTile = Resources.Load<GameObject>("dark_blue_pixel");
+        prefabWhiteTile = Resources.Load<GameObject>("white_pixel");
     }
 
     void drawFrame()
@@ -138,7 +152,7 @@ public class GridDrawer : MonoBehaviour
     }
     
     // draws a single black tile
-    void drawBlackTile(float posRow, float posCol)
+    public void drawBlackTile(float posRow, float posCol)
     {
         float posX = initPosX + (gridSpacing * posCol) + (gridSpacing / 2);
         float posY = initPosY - (gridSpacing * posRow) - (gridSpacing / 2);
@@ -146,6 +160,16 @@ public class GridDrawer : MonoBehaviour
         GameObject blackTile = Instantiate(this.prefabDarkBlueTile);
         blackTile.transform.localScale = new Vector3(tileSize,tileSize);
         blackTile.transform.position = new Vector3(posX, posY);
+    }
+
+    public void drawWhiteTile(float posRow, float posCol)
+    {
+        float posX = initPosX + (gridSpacing * posCol) + (gridSpacing / 2);
+        float posY = initPosY - (gridSpacing * posRow) - (gridSpacing / 2);
+        
+        GameObject whiteTile = Instantiate(this.prefabWhiteTile);
+        whiteTile.transform.localScale = new Vector3(tileSize,tileSize);
+        whiteTile.transform.position = new Vector3(posX, posY);
     }
 
     public void drawAllBoard()

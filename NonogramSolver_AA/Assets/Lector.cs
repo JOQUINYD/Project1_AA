@@ -51,7 +51,7 @@ public class Lector : MonoBehaviour
                     //print(dataBase.ColumnsArray[i][j]);
                 }
             }
-            
+            dataBase.grid._init_gridDrawer(dataBase.GameBoard);
         }
 
     }
