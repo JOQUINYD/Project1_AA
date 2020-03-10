@@ -8,6 +8,7 @@ public class Game : MonoBehaviour
     public Lector lector;
     public Solver solver;
     public DataBase db;
+    private GridDrawer grid;
 
     void Start()
     {
@@ -22,7 +23,8 @@ public class Game : MonoBehaviour
         
         db.printNonogram();
         db.printNonogramBonito();
-
+        grid = new GridDrawer(db.GameBoard);
+        grid.drawAllBoard();
     }
 
     // Update is called once per frame
