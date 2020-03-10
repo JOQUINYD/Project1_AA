@@ -22,7 +22,7 @@ public class Solver : MonoBehaviour
         Point find = getEmpty();
         if (find == Point.Empty)
         {
-            return true;
+           // return true;
             return validRows() && validColumns();
         }
 
@@ -35,13 +35,24 @@ public class Solver : MonoBehaviour
         {
             if (validPosition(find, i))
             {
+
                 dataBase.GameBoard[find.X][find.Y] = i;
+                if (dataBase.PasoAPaso)
+                {
+                    //Si i==1 pinte el cuadro en el find con 1
+                }
+
                 if (solve())
                 {
                     return true;
                 }
 
                 dataBase.GameBoard[find.X][find.Y] = 0; 
+                if (dataBase.PasoAPaso)
+                {
+                    //pinte el cuadro en el find con 0
+                }
+
             }
         }
         

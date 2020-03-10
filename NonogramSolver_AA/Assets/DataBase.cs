@@ -9,6 +9,7 @@ public class DataBase : MonoBehaviour
     private int[][] rowsArray;
     private int[][] columnsArray;
     private int[][] gameBoard;
+    private bool pasoAPaso;
     
     
     
@@ -24,6 +25,11 @@ public class DataBase : MonoBehaviour
         
     }
 
+    public bool PasoAPaso
+    {
+        get => pasoAPaso;
+        set => pasoAPaso = value;
+    }
     public int Columns
     {
         get => columns;

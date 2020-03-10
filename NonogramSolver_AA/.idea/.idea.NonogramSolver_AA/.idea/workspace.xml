@@ -14,21 +14,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/GridDrawer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/DataBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Lector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../Project1_AA - Copy/NonogramSolver_AA/Assets/Solver.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Solver.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/GridDrawer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Datos.cs" />
         <option value="$PROJECT_DIR$/Assets/Lector.cs" />
-        <option value="$PROJECT_DIR$/Assets/Solver.cs" />
-        <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game.cs" />
         <option value="$PROJECT_DIR$/Assets/GridDrawer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game.cs" />
+        <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Solver.cs" />
       </list>
     </option>
   </component>
@@ -82,6 +83,8 @@
       <workItem from="1583729054157" duration="2649000" />
       <workItem from="1583802004847" duration="2705000" />
       <workItem from="1583816631144" duration="2283000" />
+      <workItem from="1583853631682" duration="660000" />
+      <workItem from="1583862603670" duration="1512000" />
     </task>
     <servers />
   </component>
