@@ -22,6 +22,7 @@ public class Solver : MonoBehaviour
         Point find = getEmpty();
         if (find == Point.Empty)
         {
+            return true;
             return validRows() && validColumns();
         }
 
@@ -291,6 +292,16 @@ public class Solver : MonoBehaviour
         {
             return false;
         }
+        int[] arrT = arrToTraks(arr,tracks.Length);
+        for (int i = 0; i < arrT.Length; i++)
+        {
+
+            if (arrT[i]!=0 && arrT[i] < tracks[i])
+            {
+                return false;
+            }
+
+        }
         
         return true;
     }
@@ -301,6 +312,7 @@ public class Solver : MonoBehaviour
         {
             return validArrayA2(tracks, arr, n);
         }
+        
 
         int traksLen = tracks.Length;
 
@@ -312,7 +324,7 @@ public class Solver : MonoBehaviour
         {
             return true;
         }
-        
+
         bool arrFull = arrayFull(arr);
         int cantGr = cantGrupos(arr);
         
@@ -345,7 +357,7 @@ public class Solver : MonoBehaviour
     
     public bool validArrayB(int[] tracks, int[] arr)
     {
-
+        
 
         int trackPos = 0;
         int empty = emptySpacesA(arr);

@@ -97,12 +97,12 @@ public class DataBase : MonoBehaviour
             {
                 if (gameBoard[i][j] == 1)
                 {
-                    res += "[X]";
+                    res += "▓";
                 }
                 else
 
                 {
-                    res += "[O]"; 
+                    res += "▒"; 
                 }
 
             }
