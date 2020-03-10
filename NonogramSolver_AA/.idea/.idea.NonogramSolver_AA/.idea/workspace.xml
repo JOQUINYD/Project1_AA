@@ -26,8 +26,8 @@
         <option value="$PROJECT_DIR$/Assets/Datos.cs" />
         <option value="$PROJECT_DIR$/Assets/Lector.cs" />
         <option value="$PROJECT_DIR$/Assets/GridDrawer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Solver.cs" />
         <option value="$PROJECT_DIR$/Assets/Game.cs" />
+        <option value="$PROJECT_DIR$/Assets/Solver.cs" />
         <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
       </list>
     </option>
@@ -85,6 +85,7 @@
       <workItem from="1583853631682" duration="660000" />
       <workItem from="1583862603670" duration="1512000" />
       <workItem from="1583864326031" duration="2649000" />
+      <workItem from="1583870032585" duration="1827000" />
     </task>
     <servers />
   </component>

@@ -15,6 +15,12 @@ public class Solver : MonoBehaviour
 
     }
 
+    IEnumerator waitFor(int seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        
+    }
+
     public bool solve()
     {
        // print(cantxd);
@@ -41,11 +47,12 @@ public class Solver : MonoBehaviour
                 {
                     
                     dataBase.grid.drawBlackTile(find.X,find.Y);
-                    new WaitForSeconds(1);
-                    
-                        
-                    
-                    //Si i==1 pinte el cuadro en el find con 1
+                   // new WaitForSeconds(1);
+                   StartCoroutine(waitFor(1));
+
+
+
+                   //Si i==1 pinte el cuadro en el find con 1
                 }
 
                 if (solve())
@@ -58,7 +65,7 @@ public class Solver : MonoBehaviour
                 {
                     dataBase.grid.drawWhiteTile(find.X,find.Y);
                     //pinte el cuadro en el find con 0
-                    new WaitForSeconds(1);
+                    StartCoroutine(waitFor(1));
                 }
 
             }

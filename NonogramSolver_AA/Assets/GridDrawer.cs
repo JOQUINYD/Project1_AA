@@ -21,6 +21,7 @@ public class GridDrawer : MonoBehaviour
     private float initPosY;
     private float gridSpacing;
     private int[][] mainBoard;
+    private GameObject[][] graphBoard;
     
 
     //private int 
@@ -63,6 +64,8 @@ public class GridDrawer : MonoBehaviour
         this.numRows = this.mainBoard.Length;
         this.numCols = this.mainBoard[0].Length;
         setValues();
+        initGraphBoard();
+        drawFrame();
     }
 
     void setValues()
@@ -90,6 +93,27 @@ public class GridDrawer : MonoBehaviour
         prefabWhiteTile = Resources.Load<GameObject>("white_pixel");
     }
 
+    void initGraphBoard()
+    {
+        graphBoard = new GameObject[numRows][];
+        for (int i = 0; i < numRows; i++)
+        {
+            graphBoard[i] = new GameObject[numCols];
+            for (int j = 0; j < numCols; j++)
+            {
+                float posX = initPosX + (gridSpacing * j) + (gridSpacing / 2);
+                float posY = initPosY - (gridSpacing * i) - (gridSpacing / 2);
+        
+                GameObject blackTile = Instantiate(this.prefabDarkBlueTile);
+                blackTile.transform.localScale = new Vector3(tileSize,tileSize);
+                blackTile.transform.position = new Vector3(posX, posY);
+                blackTile.SetActive(false);
+
+                graphBoard[i][j] = blackTile;
+            }
+        }
+    }
+    
     void drawFrame()
     {
 
@@ -154,27 +178,16 @@ public class GridDrawer : MonoBehaviour
     // draws a single black tile
     public void drawBlackTile(float posRow, float posCol)
     {
-        float posX = initPosX + (gridSpacing * posCol) + (gridSpacing / 2);
-        float posY = initPosY - (gridSpacing * posRow) - (gridSpacing / 2);
-        
-        GameObject blackTile = Instantiate(this.prefabDarkBlueTile);
-        blackTile.transform.localScale = new Vector3(tileSize,tileSize);
-        blackTile.transform.position = new Vector3(posX, posY);
+        graphBoard[(int) posRow][(int) posCol].SetActive(true);
     }
 
     public void drawWhiteTile(float posRow, float posCol)
     {
-        float posX = initPosX + (gridSpacing * posCol) + (gridSpacing / 2);
-        float posY = initPosY - (gridSpacing * posRow) - (gridSpacing / 2);
-        
-        GameObject whiteTile = Instantiate(this.prefabWhiteTile);
-        whiteTile.transform.localScale = new Vector3(tileSize,tileSize);
-        whiteTile.transform.position = new Vector3(posX, posY);
+        graphBoard[(int) posRow][(int) posCol].SetActive(false);
     }
 
     public void drawAllBoard()
     {
-        drawFrame();
         for (int i = 0; i < numRows; i++)
         {
             for (int j = 0; j < numCols; j++)

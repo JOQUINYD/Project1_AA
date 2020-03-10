@@ -9,7 +9,7 @@ public class DataBase : MonoBehaviour
     private int[][] rowsArray;
     private int[][] columnsArray;
     private int[][] gameBoard;
-    private bool pasoAPaso;
+    private bool pasoAPaso = true;
 
     public GridDrawer grid;
     
