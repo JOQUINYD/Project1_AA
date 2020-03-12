@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class DataBase : MonoBehaviour
@@ -14,7 +15,6 @@ public class DataBase : MonoBehaviour
     public GridDrawer grid;
     
     
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +27,11 @@ public class DataBase : MonoBehaviour
         
     }
 
-    
-    
+
+    public void showStepsSetter()
+    {
+        pasoAPaso = !pasoAPaso;
+    }
     
     public bool PasoAPaso
     {

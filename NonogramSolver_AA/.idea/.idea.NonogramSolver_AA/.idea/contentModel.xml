@@ -11,6 +11,7 @@
         <e p="GridDrawer.cs" t="Include" />
         <e p="Lector.cs" t="Include" />
         <e p="Solver.cs" t="Include" />
+        <e p="StartMenu.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Examples &amp; Extras" t="Include">
             <e p="Fonts" t="Include">
@@ -81,6 +82,7 @@
             <e p="EmojiOne Attribution.txt" t="Include" />
           </e>
         </e>
+        <e p="UnityMainThread.cs" t="Include" />
       </e>
       <e p="NonogramSolver_AA.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />

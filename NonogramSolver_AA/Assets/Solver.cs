@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
 using UnityEngine;
 
 public class Solver : MonoBehaviour
@@ -10,15 +11,36 @@ public class Solver : MonoBehaviour
 
     public int cantxd = 0;
 
+    public GameObject mainThread;
+    
+    private Thread thread;
+    
     void Start()
     {
-
+        
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
-    IEnumerator waitFor(int seconds)
+    
+    // Thread para correr 
+    public void startSolving()
     {
-        yield return new WaitForSeconds(seconds);
-        
+        thread = new Thread(Run);
+        thread.Start();
+    }
+
+    public void Run()
+    {
+        var watch = System.Diagnostics.Stopwatch.StartNew();
+        solve();
+        watch.Stop();
+        var elapsedMs = watch.ElapsedMilliseconds;
+        UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawAllBoard(); });
     }
 
     public bool solve()
@@ -45,14 +67,8 @@ public class Solver : MonoBehaviour
                 dataBase.GameBoard[find.X][find.Y] = i;
                 if (dataBase.PasoAPaso && i==1)
                 {
-                    
-                    dataBase.grid.drawBlackTile(find.X,find.Y);
-                   // new WaitForSeconds(1);
-                   StartCoroutine(waitFor(1));
-
-
-
-                   //Si i==1 pinte el cuadro en el find con 1
+                    // encolar accion
+                    UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawBlackTile(find.X, find.Y); });
                 }
 
                 if (solve())
@@ -63,9 +79,9 @@ public class Solver : MonoBehaviour
                 dataBase.GameBoard[find.X][find.Y] = 0; 
                 if (dataBase.PasoAPaso)
                 {
-                    dataBase.grid.drawWhiteTile(find.X,find.Y);
-                    //pinte el cuadro en el find con 0
-                    StartCoroutine(waitFor(1));
+                    // encolar accion
+                    UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawWhiteTile(find.X, find.Y); });
+
                 }
 
             }
@@ -109,11 +125,6 @@ public class Solver : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public Point getEmpty()
     {

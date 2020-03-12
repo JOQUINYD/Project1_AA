@@ -8,7 +8,6 @@ public class GridDrawer : MonoBehaviour
 {
     private GameObject prefabBlackTile;
     private GameObject prefabDarkBlueTile;
-    private GameObject prefabWhiteTile;
     
     private int numCols;
     private int numRows;
@@ -23,21 +22,7 @@ public class GridDrawer : MonoBehaviour
     private int[][] mainBoard;
     private GameObject[][] graphBoard;
     
-
-    //private int 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public GridDrawer(int numCols, int numRows, int[][] mainBoard)
     {
         this.numCols = numCols;
@@ -68,9 +53,20 @@ public class GridDrawer : MonoBehaviour
         drawFrame();
     }
 
+    public void cleanGraphBoard()
+    {
+        for (int i = 0; i < numRows; i++)
+        {
+            for (int j = 0; j < numCols; j++)
+            {
+                drawWhiteTile(i,j);
+            }
+        }
+    }
+    
     void setValues()
     {
-        maxSize = 15;
+        maxSize = 280;
         float space = 1.5f;
         if (numCols <= numRows)
         {
@@ -90,7 +86,6 @@ public class GridDrawer : MonoBehaviour
         
         prefabBlackTile = Resources.Load<GameObject>("black_pixel");
         prefabDarkBlueTile = Resources.Load<GameObject>("dark_blue_pixel");
-        prefabWhiteTile = Resources.Load<GameObject>("white_pixel");
     }
 
     void initGraphBoard()
@@ -121,8 +116,8 @@ public class GridDrawer : MonoBehaviour
         GameObject xFrame = Instantiate(prefabBlackTile);
         
         // leftmost and upper bold frame 
-        yFrame.transform.localScale = new Vector3(20,maxSizeY);
-        xFrame.transform.localScale = new Vector3(maxSizeX,20);
+        yFrame.transform.localScale = new Vector3(20*(maxSize/15),maxSizeY);
+        xFrame.transform.localScale = new Vector3(maxSizeX,20*(maxSize/15));
         
         yFrame.transform.position = new Vector3(initPosX,0);
         xFrame.transform.position = new Vector3(0,initPosY);
@@ -130,8 +125,8 @@ public class GridDrawer : MonoBehaviour
         // rightmost and lower bold frame
         yFrame = Instantiate(prefabBlackTile);
         xFrame = Instantiate(prefabBlackTile);
-        yFrame.transform.localScale = new Vector3(20,maxSizeY);
-        xFrame.transform.localScale = new Vector3(maxSizeX,20);
+        yFrame.transform.localScale = new Vector3(20*(maxSize/15),maxSizeY);
+        xFrame.transform.localScale = new Vector3(maxSizeX,20*(maxSize/15));
         
         yFrame.transform.position = new Vector3((maxSizeX/200),0);
         xFrame.transform.position = new Vector3(0,(-maxSizeY/200));
@@ -145,11 +140,11 @@ public class GridDrawer : MonoBehaviour
 
             if (i % 5 == 0)
             {
-                yFrame.transform.localScale = new Vector3(20,maxSizeY);
+                yFrame.transform.localScale = new Vector3(20*(maxSize/15),maxSizeY);
             }
             else
             {
-                yFrame.transform.localScale = new Vector3(5, maxSizeY);
+                yFrame.transform.localScale = new Vector3(5*(maxSize/15), maxSizeY);
             }
 
             yFrame.transform.position = new Vector3(nextPosX,0);
@@ -164,11 +159,11 @@ public class GridDrawer : MonoBehaviour
 
             if (i % 5 == 0)
             {
-                xFrame.transform.localScale = new Vector3(maxSizeX,20);
+                xFrame.transform.localScale = new Vector3(maxSizeX,20*(maxSize/15));
             }
             else
             {
-                xFrame.transform.localScale = new Vector3(maxSizeX, 5);
+                xFrame.transform.localScale = new Vector3(maxSizeX, 5*(maxSize/15));
             }
 
             xFrame.transform.position = new Vector3(0,nextPosY);
@@ -198,7 +193,7 @@ public class GridDrawer : MonoBehaviour
                 }
                 else
                 {
-                    //drawBlackTile(initPosX+((gridSpacing/2)*i),initPosY-((gridSpacing/2)*j));
+                    drawWhiteTile(i,j);
                 }
             }
         }

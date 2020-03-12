@@ -14,13 +14,9 @@ public class Game : MonoBehaviour
     {
         lector.readFile("");
         db.printNonogram();
-        //
-        var watch = System.Diagnostics.Stopwatch.StartNew();
-        solver.solve();
-        watch.Stop();
-        var elapsedMs = watch.ElapsedMilliseconds;
-        print(elapsedMs);
-        
+        // startSolving grafica en "tiempo real"
+        //solver.startSolving();
+
         db.printNonogram();
         db.printNonogramBonito();
 
@@ -30,6 +26,14 @@ public class Game : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       // db.grid.drawAllBoard();
+    }
+
+    public void startSolve()
+    {
+        UnityMainThread.wkr.clearJobs();
+        db.grid.cleanGraphBoard();
+        lector.readFile("");
+        solver.startSolving();
     }
 }

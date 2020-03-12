@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEditor;
 
 public class Lector : MonoBehaviour
 {
     private string file = "";
+    static string path;
     public DataBase dataBase;
     
     // Start is called before the first frame update
@@ -17,9 +21,17 @@ public class Lector : MonoBehaviour
 
     }
 
+
+    public void OpenExplorer()
+    {
+        path = EditorUtility.OpenFilePanel("Overwrite with txt", "", "txt");
+    }
+    
     public void readFile(string name)
     {
-        using (StreamReader fr = File.OpenText("Nonogram.txt"))
+        if (path == null)
+            path = "Nonogram.txt";
+        using (StreamReader fr = File.OpenText(path))
         {
             file = fr.ReadLine();
             setCounter(file);
