@@ -23,6 +23,9 @@ internal class UnityMainThread : MonoBehaviour
 
     internal void clearJobs()
     {
-        jobs.Clear();
+        lock (jobs)
+        {
+            jobs.Clear();   
+        }
     }
 }

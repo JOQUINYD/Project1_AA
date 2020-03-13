@@ -41,6 +41,7 @@ public class Solver : MonoBehaviour
         watch.Stop();
         var elapsedMs = watch.ElapsedMilliseconds;
         UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawAllBoard(); });
+        UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawTimeStamp(elapsedMs); });
     }
 
     public bool solve()

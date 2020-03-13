@@ -1,18 +1,23 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class GridDrawer : MonoBehaviour
 {
     private GameObject prefabBlackTile;
     private GameObject prefabDarkBlueTile;
+    public TextMeshProUGUI timeStamp;
+    private TextMeshPro tmpScore;
     
     private int numCols;
     private int numRows;
 
     private int maxSize;
+    private float space;
     private float maxSizeX;
     private float maxSizeY;
     private float tileSize;
@@ -21,6 +26,9 @@ public class GridDrawer : MonoBehaviour
     private float gridSpacing;
     private int[][] mainBoard;
     private GameObject[][] graphBoard;
+    
+    private int[][] rowsHints;
+    private int[][] columnsHints;
     
     
     public GridDrawer(int numCols, int numRows, int[][] mainBoard)
@@ -43,11 +51,13 @@ public class GridDrawer : MonoBehaviour
     {
     }
 
-    public void _init_gridDrawer(int[][] _mainBoard)
+    public void _init_gridDrawer(int[][] _mainBoard, int[][] _rowsHints, int[][] _columnsHints)
     {
         this.mainBoard = _mainBoard;
         this.numRows = this.mainBoard.Length;
         this.numCols = this.mainBoard[0].Length;
+        this.rowsHints = _rowsHints;
+        this.columnsHints = _columnsHints;
         setValues();
         initGraphBoard();
         drawFrame();
@@ -67,7 +77,7 @@ public class GridDrawer : MonoBehaviour
     void setValues()
     {
         maxSize = 280;
-        float space = 1.5f;
+        space = 4f*15;
         if (numCols <= numRows)
         {
             maxSizeY = (float) ((maxSize - space) * 200);
@@ -226,5 +236,34 @@ public class GridDrawer : MonoBehaviour
             strBoard += "\n";
         }
         Debug.Log(strBoard);
+    }
+
+    public void drawTimeStamp(long time)
+    {
+        timeStamp.text = time.ToString();
+    }
+
+    public void drawHints()
+    {
+        
+    }
+
+    private void drawRowsHints()
+    {
+        // Get a reference to an existing TextMeshPro component or Add one if needed.
+        TextMeshPro m_Text;
+        TextContainer m_TextContainer;
+        m_Text = Instantiate(GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>());
+ 
+        // Get a reference to the text container. Alternatively, you can now use the RectTransform on the text object instead.
+        m_TextContainer = Instantiate(GetComponent<TextContainer>());
+        m_TextContainer.width = 25f;
+        m_TextContainer.height = 3f;
+ 
+        // Set the point size
+        m_Text.fontSize = 24;
+ 
+        // Set the text
+        m_Text.text = "A simple line of text.";
     }
 }
