@@ -12,6 +12,7 @@ public class Game : MonoBehaviour
 
     void Start()
     {
+        //db.grid.drawHint("1"+"\n"+"2"+"\n"+"3"+"\n"+"4");
         lector.readFile("");
         db.printNonogram();
         // startSolving grafica en "tiempo real"

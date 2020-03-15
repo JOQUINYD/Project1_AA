@@ -12,6 +12,7 @@ public class GridDrawer : MonoBehaviour
     private GameObject prefabDarkBlueTile;
     public TextMeshProUGUI timeStamp;
     private TextMeshPro tmpScore;
+    public RectTransform hintsContainer;
     
     private int numCols;
     private int numRows;
@@ -61,6 +62,7 @@ public class GridDrawer : MonoBehaviour
         setValues();
         initGraphBoard();
         drawFrame();
+        drawHints();
     }
 
     public void cleanGraphBoard()
@@ -245,25 +247,148 @@ public class GridDrawer : MonoBehaviour
 
     public void drawHints()
     {
-        
+        drawRowsHints();
+        drawColsHints();
     }
 
     private void drawRowsHints()
     {
-        // Get a reference to an existing TextMeshPro component or Add one if needed.
-        TextMeshPro m_Text;
-        TextContainer m_TextContainer;
-        m_Text = Instantiate(GetComponent<TextMeshPro>() ?? gameObject.AddComponent<TextMeshPro>());
- 
-        // Get a reference to the text container. Alternatively, you can now use the RectTransform on the text object instead.
-        m_TextContainer = Instantiate(GetComponent<TextContainer>());
-        m_TextContainer.width = 25f;
-        m_TextContainer.height = 3f;
- 
-        // Set the point size
-        m_Text.fontSize = 24;
- 
-        // Set the text
-        m_Text.text = "A simple line of text.";
+        int fontSize;
+        float SizeDelta = defineMaxSizeDelta(findMaxNumOfHints(rowsHints));
+        float posX;
+        float posY;
+        string hints;
+        int numOfHints; 
+        
+        for (int i = 0; i < numRows; i++)
+        {
+            numOfHints = rowsHints[i].Length;
+            fontSize = defineFontSize(numOfHints);
+            //SizeDelta = defineMaxSizeDelta(numOfHints);
+            float[] pos = defineHintPosRows(i, SizeDelta);
+            posX = pos[0];
+            posY = pos[1];
+            hints = RowHintsToString(rowsHints[i]);
+            drawHint(hints,fontSize,SizeDelta,50, posX, posY, true);
+        }
     }
+
+    private void drawColsHints()
+    {
+        int fontSize;
+        float SizeDelta = space;
+        float posX;
+        float posY;
+        string hints;
+        int numOfHints;
+        for (int i = 0; i < numCols; i++)
+        {
+            numOfHints = columnsHints[i].Length;
+            fontSize = defineFontSize(numOfHints);
+            float[] pos = defineHintPosCols(i, SizeDelta);
+            posX = pos[0];
+            posY = pos[1];
+            hints = ColHintsToString(columnsHints[i]);
+            drawHint(hints,fontSize, tileSize, SizeDelta, posX, posY, false);
+        }
+    }
+
+
+    private int defineFontSize(int numOfHints)
+    {
+        if (numOfHints > 5)
+        {
+            return 12 - (numOfHints / 4);
+        }
+
+        return 12;
+    }
+
+    private float defineMaxSizeDelta(int maxNumOfHints)
+    {
+        float spaceBtHints = 25;
+        return maxNumOfHints * spaceBtHints;
+    }
+
+    private int findMaxNumOfHints(int[][] hints)
+    {
+        int max = 0;
+        for (int i = 0; i < hints.Length; i++)
+        {
+            if (hints[i].Length > max)
+                max = hints[i].Length;
+        }
+
+        return max;
+    }
+
+    private float[] defineHintPosCols(int posCol, float maxSizeDelta)
+    {
+        
+        float posX = initPosX + (gridSpacing * posCol) + (gridSpacing / 2);
+        float posY = initPosY + (maxSizeDelta / 1.8f);
+
+        float[] position = new[] {posX, posY};
+
+        return position;
+    }
+
+    private float[] defineHintPosRows(int posRow, float maxSizeDelta)
+    {
+        float posX = initPosX - (maxSizeDelta/1.8f);
+        float posY = initPosY - (gridSpacing * posRow) - (gridSpacing / 2);
+        
+        float[] position = new[] {posX, posY};
+
+        return position;
+    }
+
+    private string RowHintsToString(int[] hints)
+    {
+        string text = "";
+        for (int i = 0; i < hints.Length; i++)
+        {
+            text += hints[i].ToString() + " ";
+        }
+
+        return text;
+    }
+    
+    private string ColHintsToString(int[] hints)
+    {
+        string text = "";
+        for (int i = 0; i < hints.Length; i++)
+        {
+            text += hints[i].ToString() + "\n";
+        }
+
+        return text;
+    }
+
+
+    public void drawHint(string text, int fontSize, float maxWidth, float maxHeight, float posX, float posY, bool rightAlignment)
+    {
+        fontSize = 12;
+        GameObject textContainer = new GameObject("HintTextMesh", typeof(TextMeshProUGUI));
+        textContainer.transform.SetParent(hintsContainer.transform, false);
+        textContainer.GetComponent<TextMeshProUGUI>().text = text;
+        if (rightAlignment)
+        {
+            textContainer.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Right;
+        }
+        else
+        {
+            textContainer.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Center;
+            textContainer.GetComponent<TextMeshProUGUI>().alignment = TextAlignmentOptions.Bottom;
+        }
+        textContainer.GetComponent<TextMeshProUGUI>().fontSize = fontSize;
+        textContainer.GetComponent<TextMeshProUGUI>().color = Color.black;
+
+        RectTransform rectTransform = textContainer.GetComponent<RectTransform>();
+        
+        rectTransform.sizeDelta = new Vector2(maxWidth,maxHeight);
+        rectTransform.position = new Vector3(posX,posY);
+    }
+    
+    
 }

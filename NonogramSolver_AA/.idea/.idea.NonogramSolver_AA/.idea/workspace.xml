@@ -15,11 +15,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Game.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/StartMenu.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/DataBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/UnityMainThread.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Lector.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Solver.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Lector.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/DataBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/GridDrawer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -28,10 +26,10 @@
         <option value="$PROJECT_DIR$/Assets/Datos.cs" />
         <option value="$PROJECT_DIR$/Assets/StartMenu.cs" />
         <option value="$PROJECT_DIR$/Assets/DataBase.cs" />
-        <option value="$PROJECT_DIR$/Assets/Game.cs" />
         <option value="$PROJECT_DIR$/Assets/Solver.cs" />
         <option value="$PROJECT_DIR$/Assets/Lector.cs" />
         <option value="$PROJECT_DIR$/Assets/UnityMainThread.cs" />
+        <option value="$PROJECT_DIR$/Assets/Game.cs" />
         <option value="$PROJECT_DIR$/Assets/GridDrawer.cs" />
       </list>
     </option>
@@ -96,6 +94,7 @@
       <workItem from="1583981405287" duration="5881000" />
       <workItem from="1584039574184" duration="6858000" />
       <workItem from="1584110362437" duration="1514000" />
+      <workItem from="1584206256318" duration="9269000" />
     </task>
     <servers />
   </component>
@@ -117,34 +116,15 @@
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="0" y="120" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1583685816671" />
-    <state x="531" y="236" key="run.anything.popup" timestamp="1583865782325">
+    <state x="531" y="236" key="run.anything.popup" timestamp="1584207197062">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="425" y="189" key="run.anything.popup/0.0.1536.834@0.0.1536.834" timestamp="1583617398001" />
-    <state x="531" y="236" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583865782325" />
+    <state x="531" y="236" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584207197062" />
     <state x="539" y="193" width="840" height="846" key="search.everywhere.popup" timestamp="1583960249349">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1583692425558" />
     <state x="539" y="193" width="840" height="846" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583960249349" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/DataBase.cs</url>
-          <line>27</line>
-          <properties documentPath="$PROJECT_DIR$/Assets/DataBase.cs" initialLine="27">
-            <startOffsets>
-              <option value="528" />
-            </startOffsets>
-            <endOffsets>
-              <option value="529" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
