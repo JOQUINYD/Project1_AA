@@ -36,6 +36,19 @@ public class Solver : MonoBehaviour
 
     public void Run()
     {
+        print("son cuadros");
+        print(dataBase.Cuadros);
+        print("Hay tantos cuadros");
+        print((dataBase.Rows * dataBase.Columns) );
+        if (dataBase.Cuadros < (dataBase.Rows * dataBase.Columns) / 2)
+        {
+            print("voy con 2");
+            
+        }
+        else
+        {
+            print("voy con 1");
+        }
         var watch = System.Diagnostics.Stopwatch.StartNew();
         solve();
         watch.Stop();
@@ -43,9 +56,14 @@ public class Solver : MonoBehaviour
         UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawAllBoard(); });
         UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawTimeStamp(elapsedMs); });
     }
+    
+    
 
     public bool solve()
     {
+        
+        
+        
        // print(cantxd);
         //cantxd++;
         Point find = getEmpty();
@@ -57,70 +75,72 @@ public class Solver : MonoBehaviour
 
         find.X = find.X - 1;
         find.Y = find.Y - 1;
-        
 
 
-        for (int i = 1; i < 3; i++)
+        if (dataBase.Cuadros < (dataBase.Rows * dataBase.Columns) / 2)
         {
-            if (validPosition(find, i))
+            //print("Voy por 2");
+            for (int i = 2; i >0; i--)
             {
-
-                dataBase.GameBoard[find.X][find.Y] = i;
-                if (dataBase.PasoAPaso && i==1)
+                if (validPosition(find, i))
                 {
-                    // encolar accion
-                    UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawBlackTile(find.X, find.Y); });
+
+                    dataBase.GameBoard[find.X][find.Y] = i;
+                    if (dataBase.PasoAPaso && i==1)
+                    {
+                        // encolar accion
+                        UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawBlackTile(find.X, find.Y); });
+                    }
+
+                    if (solve())
+                    {
+                        return true;
+                    }
+
+                    dataBase.GameBoard[find.X][find.Y] = 0; 
+                    if (dataBase.PasoAPaso)
+                    {
+                        // encolar accion
+                        UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawWhiteTile(find.X, find.Y); });
+
+                    }
+
                 }
-
-                if (solve())
-                {
-                    return true;
-                }
-
-                dataBase.GameBoard[find.X][find.Y] = 0; 
-                if (dataBase.PasoAPaso)
-                {
-                    // encolar accion
-                    UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawWhiteTile(find.X, find.Y); });
-
-                }
-
             }
         }
-        
-        
-        
-        
-        /*
-         Este funciona con el for de 1 y 2 arriba
-         else
+        else
         {
-            if (validPosition(find,2)) 
+            //print("Voy por 1");
+            for (int i = 1; i <3; i++)
             {
-                dataBase.GameBoard[find.X][find.Y] = 2;
-                if (solve())
+                if (validPosition(find, i))
                 {
-                    return true;
+
+                    dataBase.GameBoard[find.X][find.Y] = i;
+                    if (dataBase.PasoAPaso && i==1)
+                    {
+                        // encolar accion
+                        UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawBlackTile(find.X, find.Y); });
+                    }
+
+                    if (solve())
+                    {
+                        return true;
+                    }
+
+                    dataBase.GameBoard[find.X][find.Y] = 0; 
+                    if (dataBase.PasoAPaso)
+                    {
+                        // encolar accion
+                        UnityMainThread.wkr.AddJob(() => { dataBase.grid.drawWhiteTile(find.X, find.Y); });
+
+                    }
+
                 }
-
-                dataBase.GameBoard[find.X][find.Y] = 0;         
             }
+        }
 
-        }*/
 
-
-        /*for (int i = 1; i < 2; i++)
-        {
-            if (validPosition(find,i))
-            {
-                dataBase.GameBoard[find.X][find.Y] = i;
-                if (solve())
-                {
-                    return true;
-                }
-                dataBase.GameBoard[find.X][find.Y] = 0;   
-            }
-        }*/
         return false;
         
     }

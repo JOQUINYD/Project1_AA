@@ -15,6 +15,7 @@ public class Game : MonoBehaviour
         //db.grid.drawHint("1"+"\n"+"2"+"\n"+"3"+"\n"+"4");
         lector.readFile("");
         db.printNonogram();
+        
         // startSolving grafica en "tiempo real"
         //solver.startSolving();
 
@@ -32,6 +33,7 @@ public class Game : MonoBehaviour
 
     public void startSolve()
     {
+        
         UnityMainThread.wkr.clearJobs();
         db.grid.cleanGraphBoard();
         lector.readFile("");

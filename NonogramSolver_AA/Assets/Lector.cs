@@ -66,6 +66,17 @@ public class Lector : MonoBehaviour
             dataBase.grid._init_gridDrawer(dataBase.GameBoard, dataBase.RowsArray, dataBase.ColumnsArray);
         }
 
+        dataBase.Cuadros = 0;
+        for (int i = 0; i < dataBase.ColumnsArray.Length; i++)
+        {
+            for (int j = 0; j < dataBase.ColumnsArray[i].Length; j++)
+            {
+                dataBase.Cuadros += dataBase.ColumnsArray[i][j];
+                
+            }
+        }
+
+
     }
 
     public void setCounter(string line)

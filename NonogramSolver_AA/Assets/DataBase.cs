@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class DataBase : MonoBehaviour
 {
+    private int cuadros;
     private int rows;
     private int columns;
     private int[][] rowsArray;
@@ -66,6 +67,12 @@ public class DataBase : MonoBehaviour
     {
         get => gameBoard;
         set => gameBoard = value;
+    }
+
+    public int Cuadros
+    {
+        get => cuadros;
+        set => cuadros = value;
     }
 
     public void printBoard()
